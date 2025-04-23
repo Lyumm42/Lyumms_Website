@@ -1,8 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser, UserManager
 
-class CustomUserManager(UserManager):
 
+class CustomUserManager(UserManager):
     def create_superuser(self, username, email=None, password=None, **extra_fields):
         extra_fields.setdefault('is_active', True)
         if extra_fields.get('is_active') is not True:

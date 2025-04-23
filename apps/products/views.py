@@ -1,21 +1,19 @@
 from django.shortcuts import render
 from django.views.generic import  ListView, DetailView
-
 from .models import Category, Product
 
-# def home(requests):
-#     # context = {
-#     #     'categories': Category.objects.all(),
-#     #     'tags': Tag.objects.all(),
-#     #     'publications': Publication.objects.all().order_by('-created')[:5]
-#     # }
-#
-#     return render(request=requests, template_name='index.html')
+
+def home(requests):
+    context = {
+        'categories': Category.objects.all(),
+        'tags': Tag.objects.all(),
+        'publications': Publication.objects.all().order_by('-created')[:5]
+    }
+
+    return render(request=requests, template_name='index.html')
+
 
 class Index(ListView):
-    """
-    Главная страница
-    """
     model = Product
     extra_context = {'title': 'Главная страница'}
     template_name = 'products/index.html'

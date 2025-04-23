@@ -1,10 +1,9 @@
 from pyexpat.errors import messages
-
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, logout
-
 from .forms import LoginForm, RegistrationForm
 from .models import User
+
 
 def register_view(request):
     if request.method == 'POST':
@@ -17,12 +16,12 @@ def register_view(request):
         form = User()
     return render(request, 'users/register.html', {'form': form})
 
+
 def login_registration(request):
-    context = {'title': "Войти или эарег",
+    context = {'title': "Войти или зарегистрироваться",
                'login_form': LoginForm,
                'registration_form': RegistrationForm}
     return  render(request, 'users/register.html', context)
-
 
 
 def user_login(request):
@@ -32,7 +31,7 @@ def user_login(request):
         login(request, user)
         return redirect('index')
     else:
-        messages.error(request, 'Не вкерное имя польз или пароль')
+        messages.error(request, 'Не верное имя польз или пароль')
         return redirect('login_registration')
 
 
@@ -49,8 +48,5 @@ def registrations(request):
     else:
         for error in form.errors:
             messages.error(request, form.errors[error].as_text())
-        messages.error(request, 'Не вкерное имя польз или пароль')
+        messages.error(request, 'Не верное имя польз или пароль')
     return  redirect('login_registration')
-
-
-

@@ -12,9 +12,6 @@ class Category(models.Model):
 
 
     def get_absolute_url(self):
-        """
-        Ссылка на страницу категорий
-        """
         return reverse('category_detail', kwargs={'slug': self.slug})
 
     def __str__(self):
@@ -59,7 +56,6 @@ class Product(models.Model):
         verbose_name_plural = "Товары"
 
 
-
 class Gallery(models.Model):
     image = models.ImageField(upload_to='products/', verbose_name='Изображение')
     product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='images')
@@ -67,5 +63,3 @@ class Gallery(models.Model):
     class Meta:
         verbose_name = "Изображение"
         verbose_name_plural = "Галерея товаров"
-
-

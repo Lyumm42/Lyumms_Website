@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.utils.safestring import mark_safe
-
 from .models import Category, Product, Gallery
+
 
 class GalleryInline(admin.TabularInline):
     fk_name = 'product'
@@ -22,7 +22,6 @@ class CategoryAdmin(admin.ModelAdmin):
             return '0'
 
 
-
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
     list_display = ['pk', 'title', 'category', 'quantity', 'price', 'created_at', 'size', 'color']
@@ -38,6 +37,3 @@ class ProductAdmin(admin.ModelAdmin):
             return mark_safe(f'<img src="{obj.images.all()[0].image.url}" width="75">')
         else:
             return '-'
-
-
-

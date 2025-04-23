@@ -1,6 +1,4 @@
 from django.urls import path
-
-# from core.urls import urlpatterns
 from .views import *
 from ..users.views import login_registration, user_login, user_logout, registrations
 

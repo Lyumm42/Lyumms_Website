@@ -1,8 +1,7 @@
 from django.shortcuts import render, redirect
 from django.views.generic import TemplateView
-
 from apps.products.models import Product
-from apps.cart import Cart
+from apps.cart.cart import Cart
 
 
 class CartPage(TemplateView):
